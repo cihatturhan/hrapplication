@@ -1,7 +1,8 @@
-package com.simpleapplication.hrjoblisting;
+package com.simpleapplication.hrjoblisting.Business;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -13,11 +14,11 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    @Override
+   /* @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-                .antMatchers("/", "/home").permitAll()
+                .antMatchers("/", "/home","/joblist","/joblists","/add").permitAll()
                 .anyRequest().authenticated()
                 .and()
             .formLogin()
@@ -27,6 +28,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .logout()
                 .permitAll();
     }
+    */
+    
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+
+        http
+        .httpBasic().and()
+        .authorizeRequests()
+        .antMatchers("/add" ,"/joblists")
+        .permitAll().anyRequest().authenticated()
+        .and().csrf().disable();
+  }
 
     @Bean
     @Override

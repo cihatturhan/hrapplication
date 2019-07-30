@@ -1,8 +1,7 @@
 package com.simpleapplication.hrjoblisting.DataAccess;
 
 import java.util.List;
-
-import com.simpleapplication.hrjoblisting.Entities.JobList;
+import com.simpleapplication.hrjoblisting.Entities.Joblist;
 import javax.persistence.EntityManager;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,39 +23,48 @@ public class HibernateJobListDal implements IJobListDal{
 
 	@Override
 	@Transactional
-	public List<JobList> getAll() {
+	public List<Joblist> getAll() {
 		Session session = entityManager.unwrap(Session.class);
-		List<JobList> cities= session.createQuery("from JobList",JobList.class).getResultList();
+		List<Joblist> cities= session.createQuery("from Joblist",Joblist.class).getResultList();
 		return cities; 
+ 
 	}
 
 	@Override
-	public void add(JobList joblist) {
+	@Transactional
+	public void add(Joblist joblist) {
 		Session session = entityManager.unwrap(Session.class);
 		session.saveOrUpdate(joblist);
 		
 	}
 
+
 	@Override
-	public void update(JobList joblist) {
+	@Transactional
+	public void update(Joblist joblist) {
 		Session session = entityManager.unwrap(Session.class);
 		session.saveOrUpdate(joblist);
 		
 	}
 
+
 	@Override
-	public void delete(JobList joblist) {
+	@Transactional
+	public void delete(Joblist joblist) {
 		Session session = entityManager.unwrap(Session.class);
-		JobList joblistToDelete= session.get(JobList.class,joblist.getId());/// önce sileceğimiz nesyeyi yakalıyoruz
+		Joblist joblistToDelete= session.get(Joblist.class,joblist.getId());/// önce sileceğimiz nesyeyi yakalıyoruz
 		session.delete(joblistToDelete);
 		
 	}
 
+
 	@Override
-	public JobList getById(int id) {
+	@Transactional
+	public Joblist getById(int id) {
 		Session session = entityManager.unwrap(Session.class);
-		JobList joblist = session.get(JobList.class, id);
+		Joblist joblist = session.get(Joblist.class, id);
 		return joblist;
+
 	}
 
 	

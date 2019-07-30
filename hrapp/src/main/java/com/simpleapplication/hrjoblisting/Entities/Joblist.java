@@ -4,9 +4,9 @@ import java.util.Date;
 import javax.persistence.*;
 
 @Entity
-@Table(name="JobList")
+@Table(name="Joblist")
 
-public class JobList {
+public class Joblist {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +18,7 @@ public class JobList {
 	private String jobDescription;
 	@Column(name="numberofpeopletohire")
 	private int numberOfPeopleToHire;
+	
 	@Temporal(TemporalType.DATE )
 	@Column(name="lastapplicationdate")
 	private Date lastApplicationDate;
@@ -28,7 +29,7 @@ public class JobList {
 	
 	
 	
-	public JobList(int id, String jobTitle, String jobDescription, int numberOfPeopleToHire, Date lastApplicationDate) {
+	public Joblist(int id, String jobTitle, String jobDescription, int numberOfPeopleToHire, Date lastApplicationDate) {
 		super();
 		this.id = id;
 		this.jobTitle = jobTitle;
@@ -37,7 +38,7 @@ public class JobList {
 		this.lastApplicationDate = lastApplicationDate;
 	}
 	
-	public JobList(){}
+	public Joblist(){}
 	
 	
 	public int getId() {

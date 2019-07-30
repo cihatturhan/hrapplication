@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html 
+  xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <title>Joblist</title>
+    </head>
+    <body>
+
+<div layout:fragment="content">
+<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+    
+        <div th:each="resource : ${resources}" th:href="${resource.id}" >
+		        <div>
+		         <p>id <b th:text="${resource.id}"></b></p>
+		         <p>Title <b th:text="${resource.jobTitle}"></b></p>
+		         <p>jobDescription <b th:text="${resource.jobDescription}"></b></p>
+		         <p>numberOfPeopleToHire <b th:text="${resource.numberOfPeopleToHire}"></b></p>
+		         <p>lastapplicationdate <b th:text="${resource.lastApplicationDate}"></b></p>
+		        </div>
+            
+        </div>
+        
+  
+</div>
+    </body>
+</html>
