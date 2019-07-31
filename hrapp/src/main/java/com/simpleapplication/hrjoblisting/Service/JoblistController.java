@@ -2,19 +2,20 @@ package com.simpleapplication.hrjoblisting.Service;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.simpleapplication.hrjoblisting.Business.IJobListService;
 import com.simpleapplication.hrjoblisting.Entities.Joblist;
 
-@RestController
+@Controller
 
 public class JoblistController {
 	
@@ -32,19 +33,47 @@ public class JoblistController {
 		return "joblist";
 	
 	}
-	@GetMapping("/joblists")
-	public List<Joblist> getTehm(){
-		
-		
-		return joblistService.getAll();
+	@GetMapping("/listing")
+	public String lisitng (Model model){
+		List<Joblist> joblists=joblistService.getAll();
+		model.addAttribute("joblists", joblists);
+		return "listing";
+	
 	}
+
 	@PostMapping("/add")
-	public void add(@RequestBody Joblist joblist) {
-		System.out.println("added"+joblist.getJobDescription());
+	public String add(@ModelAttribute Joblist joblist) {
+		
+		
 		joblistService.add(joblist);
+		return "redirect:joblist";
 	}
 	
+	@PostMapping("/update")
+	public String update(@ModelAttribute Joblist joblist) {
+	joblistService.update(joblist);
+	return "redirect:listing";
+	}
 	
+	@GetMapping("/delete/{id}")
+	public String delete(@PathVariable int id) {
+		System.out.println("id is ---"+id);
+	joblistService.delete(id);
+		return "redirect:/listing";
+	}
+	
+	@GetMapping("/joblist/{id}")
+	public String edit(@PathVariable int id,Model model){
+		Joblist joblist=joblistService.getById(id);
+		model.addAttribute("joblist",joblist );
+		
+		System.out.println(joblist.getJobTitle());
+		return "editjoblist";
+		
+	}
+
+
+
 	
 
 }

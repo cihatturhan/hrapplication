@@ -47,8 +47,8 @@ public class JobListManager implements IJobListService {
 
 	@Override
 	@Transactional
-	public void delete(Joblist joblist) {
-		joblistDal.delete(joblist);
+	public void delete(int id) {
+		joblistDal.delete(id);
 		
 	}
 

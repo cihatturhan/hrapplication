@@ -42,24 +42,53 @@
 </nav>
 
     <div class="container ">
-     <div class="row justify-content-md-center">
     
-		    <div th:each="resource : ${resources}" th:href="${resource.id}" class="col-md-4">
-				 
-						  <div class="col-sm-9">
-						    <div class="card">
-						      <div class="card-body">
-						        <h5 class="card-title" th:text="${resource.jobTitle}"></h5>
-						        <p class="card-text" th:text="${resource.jobDescription}"></p>
-						        <a href="#" class="btn btn-primary">Go somewhere</a>
-						      </div>
-						    </div>
-						  </div>
-		
-				
-			</div>
-		</div>
+ 
+    
+    <table class="table table-striped">
+  <thead>
+    <tr>
+ 
+      <th scope="col">Job Title</th>
+      <th scope="col">Job Description</th>
+      <th scope="col">Last Application Date</th>
+      <th scope="col">Number Of People To Hire</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+
+  <tbody >
+   <div th:each="joblist : ${joblists}">
+    <tr>
+
+      <td th:text="${joblist.jobTitle}"></td>
+      <td th:text="${joblist.jobDescription}"></td>
+      <td th:text="${joblist.lastApplicationDate}"></td>
+      <td th:text="${joblist.numberOfPeopleToHire}"></td>
+      <td> <a th:href="@{/joblist/}+${joblist.id}"><button class="btn btn-warning"> Edit or Delete</button> </a> </td>
+
+    </tr>
+   
+
+   
 </div>
+  </tbody>
+
+ 
+  
+</table>
+    
+    
+ 
+
+
+
+ 
+    
+    
+    
+    </div>
 
 
 

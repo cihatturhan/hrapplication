@@ -3,6 +3,8 @@ package com.simpleapplication.hrjoblisting.Entities;
 import java.util.Date;
 import javax.persistence.*;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 @Table(name="Joblist")
 
@@ -21,6 +23,7 @@ public class Joblist {
 	
 	@Temporal(TemporalType.DATE )
 	@Column(name="lastapplicationdate")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date lastApplicationDate;
 	
 	
