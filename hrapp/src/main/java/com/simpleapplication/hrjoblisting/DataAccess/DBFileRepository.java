@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 import com.simpleapplication.hrjoblisting.Entities.DBFile;
 @Repository
 
-public interface DBFileRepository extends JpaRepository <DBFile, String>{
+public interface DBFileRepository extends JpaRepository <DBFile,Integer>{
 
 }

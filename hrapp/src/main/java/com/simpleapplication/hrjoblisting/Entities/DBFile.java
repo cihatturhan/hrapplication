@@ -1,6 +1,6 @@
 package com.simpleapplication.hrjoblisting.Entities;
 
-import org.hibernate.annotations.GenericGenerator;
+
 
 import javax.persistence.*;
 
@@ -18,6 +18,7 @@ public class DBFile {
 
     @Lob
     private byte[] data;
+    
 
     public DBFile() {
 

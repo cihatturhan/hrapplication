@@ -53,7 +53,7 @@ public class FileController {
     }
 
     @GetMapping("/downloadFile/{fileId}")
-    public ResponseEntity<Resource> downloadFile(@PathVariable String fileId) {
+    public ResponseEntity<Resource> downloadFile(@PathVariable int fileId) {
         // Load file from database
         DBFile dbFile = DBFileStorageService.getFile(fileId);
 

@@ -2,6 +2,8 @@ package com.simpleapplication.hrjoblisting.Business;
 
 import java.io.IOException;
 
+import javax.management.StringValueExp;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -37,9 +39,10 @@ public class DBFileStorageService {
 	        }
 	    }
 
-	    public DBFile getFile(String fileId) {
-	        return dbFileRepository.findById(fileId)
-	                .orElseThrow(() -> new MyFileNotFoundException("File not found with id " + fileId));
+	    public DBFile getFile(int id) {
+	    	System.out.println("-----logg");
+	        return dbFileRepository.findById(id)
+	                .orElseThrow(() -> new MyFileNotFoundException("File not found with id " + toString()));
 	    }
 
 }
