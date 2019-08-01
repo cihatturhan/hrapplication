@@ -57,12 +57,11 @@ public class JoblistController {
 	
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable int id) {
-		System.out.println("id is ---"+id);
 	joblistService.delete(id);
 		return "redirect:/listing";
 	}
 	
-	@GetMapping("/joblist/{id}")
+	@GetMapping("/listing/{id}")
 	public String edit(@PathVariable int id,Model model){
 		Joblist joblist=joblistService.getById(id);
 		model.addAttribute("joblist",joblist );
@@ -70,6 +69,13 @@ public class JoblistController {
 		System.out.println(joblist.getJobTitle());
 		return "editjoblist";
 		
+	}
+	
+	@GetMapping("/joblist/{id}")
+	public String Apply(@PathVariable int id,Model model) {
+		Joblist joblist=joblistService.getById(id);
+		model.addAttribute("joblist",joblist);
+        return "jobapplication";
 	}
 
 

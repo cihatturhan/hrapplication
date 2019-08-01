@@ -40,8 +40,8 @@ public class FileController {
                 .path("/downloadFile/")
                 .path(String.valueOf(dbFile.getId()))
                 .toUriString();
-
-        return new UploadFileResponse(dbFile.getFileName(),fileDownloadUri,file.getContentType(),file.getSize());
+        return new UploadFileResponse(dbFile.getFileName(),fileDownloadUri,file.getContentType(),file.getSize(),dbFile.getId());
+        
     }
 
     @PostMapping("/uploadMultipleFiles")

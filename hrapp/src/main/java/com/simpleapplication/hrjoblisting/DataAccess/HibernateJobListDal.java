@@ -25,8 +25,8 @@ public class HibernateJobListDal implements IJobListDal{
 	@Transactional
 	public List<Joblist> getAll() {
 		Session session = entityManager.unwrap(Session.class);
-		List<Joblist> cities= session.createQuery("from Joblist",Joblist.class).getResultList();
-		return cities; 
+		List<Joblist> joblist= session.createQuery("from Joblist",Joblist.class).getResultList();
+		return joblist; 
  
 	}
 

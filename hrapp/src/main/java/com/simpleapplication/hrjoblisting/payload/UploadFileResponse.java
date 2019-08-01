@@ -6,16 +6,33 @@ public class UploadFileResponse {
     private String fileDownloadUri;
     private String fileType;
     private long size;
+    private int fileId;
+    
+    
+    
 
 
 
-	public UploadFileResponse(String fileName, String fileDownloadUri, String fileType, long size) {
+
+
+
+	public UploadFileResponse(String fileName, String fileDownloadUri, String fileType, long size, int fileId) {
 		super();
 		this.fileName = fileName;
 		this.fileDownloadUri = fileDownloadUri;
 		this.fileType = fileType;
 		this.size = size;
+		this.fileId = fileId;
 	}
+    public int getFileId() {
+		return fileId;
+	}
+
+	public void setFileId(int fileId) {
+		this.fileId = fileId;
+	}
+
+	
 
 	public String getFileName() {
 		return fileName;
