@@ -18,9 +18,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
-                .antMatchers("/", "/home","/joblist","/joblists","/uploadFile", "/uploadMultipleFiles", "/downloadFile/**").permitAll()
+                .antMatchers("/", "/home","/joblist","/joblist/**","/uploadFile/**", "/uploadMultipleFiles", "/downloadFile/**").permitAll()
                 .antMatchers("/add").hasAnyRole("USER")
-                .anyRequest().authenticated()
+                .antMatchers(HttpMethod.POST, "/uploadFile").permitAll()
                 .and().csrf().disable()
             .formLogin()
                 .loginPage("/login")
@@ -32,25 +32,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
        
     }
 
-	 /*
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
 
-        http
-        .httpBasic().and()
-        .authorizeRequests()
-        .antMatchers("/add" ,"/joblists", "/update","/delete/**","/joblist/{id}","/newjoblist")
-        .permitAll().anyRequest().authenticated()
-        .and().csrf().disable();
-  }
-      */
 
     @Bean
     @Override
     public UserDetailsService userDetailsService() {
         UserDetails user =
              User.withDefaultPasswordEncoder()
-                .username("user")
+                .username("Manager")
                 .password("password")
                 .roles("USER")
                 .build();

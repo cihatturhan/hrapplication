@@ -1,20 +1,68 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-    <head>
-        <title>Spring Security Example </title>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    
+
     </head>
     <body>
-        <div th:if="${param.error}">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="/joblist">Joblists <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item " th:if="${#httpServletRequest.remoteUser}">
+        <a class="nav-link" href="/listing">Listing   </a>
+      </li>
+      <br/>
+      <li class="nav-item " th:if="${#httpServletRequest.remoteUser}">
+        <a class="nav-link " href="/applicationlist">Application Listing</a>
+      </li>
+    </ul>
+    <div class="row">
+      <h4 class="px-4">[[${#httpServletRequest.remoteUser}]]</h4>
+      <a th:if="${#httpServletRequest.remoteUser}" href="/logout"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button></a>
+      <a th:unless="${#httpServletRequest.remoteUser}" href="/login"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button></a>
+    </div>
+  </div>
+</nav>
+    
+        <div class="alert alert-danger" role="alert" th:if="${param.error}">
             Invalid username and password.
         </div>
-        <div th:if="${param.logout}">
+        <div class="alert alert-success" role="alert" th:if="${param.logout}">
             You have been logged out.
         </div>
-        <form th:action="@{/login}" method="post">
-            <div><label> User Name : <input type="text" name="username"/> </label></div>
-            <div><label> Password: <input type="password" name="password"/> </label></div>
-            <div><input type="submit" value="Sign In"/></div>
-        </form>
+
+<div class="container col-6">       
+   <form th:action="@{/login}" method="post">
+  <div class="form-group">
+    <label for="exampleInputEmail1">User Name</label>
+    <input type="text" name="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="username">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </div>
+  <button type="submit" class="btn btn-primary">Sign In</button>
+</form>
+ </div>       
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 
+   
     </body>
 </html>

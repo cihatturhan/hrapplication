@@ -17,7 +17,9 @@ public class JobApplication {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
+	@Column(nullable = false)
 	private String name;
+	@Column(nullable = false)
 	private String email;
 	private String phoneNumber;
 	private String address;
