@@ -40,6 +40,13 @@ public class JoblistController {
 		return "listing";
 	
 	}
+	@GetMapping("/applicationlist")
+	public String applicationlist (Model model){
+		List<Joblist> joblists=joblistService.getAll();
+		model.addAttribute("joblists", joblists);
+		return "applicationlist";
+	
+	}
 
 	@PostMapping("/add")
 	public String add(@ModelAttribute Joblist joblist) {
@@ -65,8 +72,6 @@ public class JoblistController {
 	public String edit(@PathVariable int id,Model model){
 		Joblist joblist=joblistService.getById(id);
 		model.addAttribute("joblist",joblist );
-		
-		System.out.println(joblist.getJobTitle());
 		return "editjoblist";
 		
 	}

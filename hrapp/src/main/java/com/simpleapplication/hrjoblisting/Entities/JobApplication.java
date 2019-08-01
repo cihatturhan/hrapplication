@@ -10,8 +10,8 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "Application")
-public class Application {
+@Table(name = "Jobapplication")
+public class JobApplication {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,31 +22,27 @@ public class Application {
 	private String phoneNumber;
 	private String address;
 	private String thoughtsOnJob;
-	private int joblistId;
+	private String joblistid;
 	private int dBFileId;
 
 	
-	public Application() {
+	public JobApplication() {
 		
 	}
 	
-	
 
 
-	
-	public Application( String name, String email, String phoneNumber, String address, String thoughtsOnJob,
-			int joblistId, int dBFileId) {
+	public JobApplication(String name, String email, String phoneNumber, String address, String thoughtsOnJob,
+			String joblistid, int dBFileId) {
 		super();
 		this.name = name;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
 		this.address = address;
 		this.thoughtsOnJob = thoughtsOnJob;
-		this.joblistId = joblistId;
+		this.joblistid = joblistid;
 		this.dBFileId = dBFileId;
 	}
-
-
 
 
 
@@ -110,13 +106,13 @@ public class Application {
 	}
 
 
-	public int getJoblistId() {
-		return joblistId;
+	public String getJoblistid() {
+		return joblistid;
 	}
 
 
-	public void setJoblistId(int joblistId) {
-		this.joblistId = joblistId;
+	public void setJoblistid(String joblistid) {
+		this.joblistid = joblistid;
 	}
 
 
@@ -130,6 +126,7 @@ public class Application {
 	}
 	
 	
+
 
 
 }

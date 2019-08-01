@@ -42,30 +42,50 @@
 </nav>
 
     <div class="container ">
-    <br/>
-    <br/>
-    <div class="row justify-content-md-center">
-    <h3>We are Hiring !!!</h3>
-    </div>
-    <br/>
-     <div class="row justify-content-md-center">
     
-		    <div th:each="resource : ${resources}" th:href="${resource.id}" class="col-md-4">
-				 
-						  <div class="col-sm-9">
-						    <div class="card">
-						      <div class="card-body">
-						        <h5 class="card-title" th:text="${resource.jobTitle}"></h5>
-						        <p class="card-text" th:text="${resource.jobDescription}"></p>
-						        <a th:href="@{/joblist/}+${resource.id}" class="btn btn-primary">Details & Apply</a>
-						      </div>
-						    </div>
-						  </div>
-		
-				
-			</div>
-		</div>
+ 
+    
+    <table class="table table-striped">
+  <thead>
+    <tr>
+ 
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone</th>
+
+    </tr>
+  </thead>
+
+  <tbody >
+   <div th:each="applications : ${applicationsbyJobID}">
+    <tr>
+
+      <td th:text="${applications.name}"></td>
+      <td th:text="${applications.email}"></td>
+      <td th:text="${applications.phoneNumber}"></td>
+      <td> <a th:href="@{/application/}+${applications.id}"><button class="btn btn-warning"> Go to Aplicants' Detail</button> </a> </td>
+
+    </tr>
+   
+
+   
 </div>
+  </tbody>
+
+ 
+  
+</table>
+    
+    
+ 
+
+
+
+ 
+    
+    
+    
+    </div>
 
 
 
