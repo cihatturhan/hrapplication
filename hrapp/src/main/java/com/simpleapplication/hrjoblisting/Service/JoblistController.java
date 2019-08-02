@@ -29,7 +29,7 @@ public class JoblistController {
 	@GetMapping("/joblist")
 	public String joblist (Model model){
 		List<Joblist> joblists=joblistService.getAll();
-		model.addAttribute("resources", joblists);
+		model.addAttribute("joblists", joblists);
 		return "joblist";
 	
 	}

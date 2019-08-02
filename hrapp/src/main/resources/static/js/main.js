@@ -4,7 +4,9 @@ var singleUploadForm = document.querySelector('#fileUploadButton');
 var singleFileUploadInput = document.querySelector('#fileUploadInput');
 var singleFileUploadError = document.querySelector('#UploadError');
 var singleFileUploadSuccess = document.querySelector('#fileUploadSuccess');
+var singleFileUploadWarning = document.querySelector('#fileUploadWarning');
 var dBFileId = document.querySelector('#dBFileId');
+
 
 
 function uploadSingleFile(file) {
@@ -17,6 +19,7 @@ function uploadSingleFile(file) {
     xhr.onload = function() {
         console.log(xhr.responseText);
         var response = JSON.parse(xhr.responseText);
+        singleFileUploadWarning.innerHTML="";
         if(xhr.status == 200) {
         	console.log("done");
             singleFileUploadError.style.display = "none";
@@ -36,6 +39,7 @@ function uploadSingleFile(file) {
 
 singleUploadForm.addEventListener('click', function(event){
     var files = singleFileUploadInput.files;
+    singleFileUploadWarning.innerHTML="Please wait File is being uploaded";
     if(files.length === 0) {
         singleFileUploadError.innerHTML = "Please select a file";
         singleFileUploadError.style.display = "block";

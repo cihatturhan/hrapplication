@@ -19,7 +19,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
             .authorizeRequests()
                 .antMatchers("/", "/home","/joblist","/joblist/**","/uploadFile/**", "/uploadMultipleFiles", "/downloadFile/**").permitAll()
-                .antMatchers("/add").hasAnyRole("USER")
+                .antMatchers("/add","/newjoblist","/listing","/listing/**","/applicationlist","/applicationlist/**").hasAnyRole("USER")
                 .antMatchers(HttpMethod.POST, "/uploadFile").permitAll()
                 .and().csrf().disable()
             .formLogin()

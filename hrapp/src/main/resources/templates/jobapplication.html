@@ -82,15 +82,16 @@
   	  
   	  <input type="hidden"  name="dBFileId" id="dBFileId" />
   	  <input type="hidden"  name="joblistid" th:value="${joblist.id}" />
-	 <div class="border border-secondary" >
+	 <div>
              <h3>Upload your resume to go upper on the list</h3>
-             <div class="row" >
-                 <input id="fileUploadInput" type="file" name="file"  required  class="col-8"/>
-                 <button type="button" id="fileUploadButton" class="btn btn-warning float-right col-3">Upload File</button>
+             <div  >
+                 <input id="fileUploadInput" type="file" name="file"  required  />
+                 <button type="button" id="fileUploadButton" class="btn btn-warning float-right ">Upload File</button>
              </div>
              <div class="upload-response">
-                 <div id="UploadError"></div>
-                 <div id="fileUploadSuccess"></div>
+                 <div  id="UploadError"></div>
+                 <div  id="fileUploadSuccess"></div>
+                 <div  id="fileUploadWarning"></div>
              </div>
      </div>  
      <br/>	 

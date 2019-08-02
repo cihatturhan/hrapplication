@@ -44,6 +44,7 @@
 
     <div class="container ">
     <br/>
+    <a th:if="${#httpServletRequest.remoteUser}" href="/newjoblist"><button  type="button" class="btn btn-success btn-lg btn-block">Add New Joblist</button></a>
     <br/>
     <div class="row justify-content-md-center">
     <h3>We are Hiring !!!</h3>
@@ -51,14 +52,14 @@
     <br/>
      <div class="row justify-content-md-center">
     
-		    <div th:each="resource : ${resources}" th:href="${resource.id}" class="col-md-4">
+		    <div th:each="joblist : ${joblists}" th:href="${joblist.id}" class="col-md-4">
 				 
 						  <div class="col-sm-9">
 						    <div class="card">
 						      <div class="card-body">
-						        <h5 class="card-title" th:text="${resource.jobTitle}"></h5>
-						        <p class="card-text" th:text="${resource.jobDescription}"></p>
-						        <a th:href="@{/joblist/}+${resource.id}" class="btn btn-primary">Details & Apply</a>
+						        <h5 class="card-title" th:text="${joblist.jobTitle}"></h5>
+						        <p class="card-text" th:text="${joblist.jobDescription}"></p>
+						        <a th:href="@{/joblist/}+${joblist.id}" class="btn btn-primary">Details & Apply</a>
 						      </div>
 						    </div>
 						  </div>

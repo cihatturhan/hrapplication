@@ -49,16 +49,17 @@
 <div class="card" style="width: 36rem;">
 
   <div class="card-body">
-    <h5 class="card-title" th:text="${applications.name}">Card title</h5>
-    <p class="card-text" th:text="@{Thoughts:    }+${applications.thoughtsOnJob}">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <h5 class="card-title" th:text="${applications.name}"></h5>
+    <p class="card-text" th:text="@{Thoughts:    }+${applications.thoughtsOnJob}"></p>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item" th:text="@{Email:    }+${applications.email}">Cras justo odio</li>
-    <li class="list-group-item" th:text="@{Phone number: }+${applications.phoneNumber}">Dapibus ac facilisis in</li>
+    <li class="list-group-item" th:text="@{Email:    }+${applications.email}"></li>
+    <li class="list-group-item" th:text="@{Phone number: }+${applications.phoneNumber}"></li>
     <li class="list-group-item"th:text="@{Phone number: }+${applications.address}">Vestibulum at eros</li>
   </ul>
   <div class="card-body">
-    <a th:href="@{/downloadFile/}+${applications.dBFileId}" class="card-link">Download Resume</a>
+    <a th:if="${applications.dBFileId}" th:href="@{/downloadFile/}+${applications.dBFileId}" class="card-link">Download Resume</a>
+    <p th:unless="${applications.dBFileId}">No resume available</p>
   </div>
 </div>
 
