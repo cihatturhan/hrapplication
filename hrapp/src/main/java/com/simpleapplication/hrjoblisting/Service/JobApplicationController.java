@@ -23,23 +23,23 @@ public class JobApplicationController {
 
 
 	
-	
+	/// adds new application and redirects applicant to joblist page
 	@PostMapping("/addapplication")
 	public String add(@ModelAttribute JobApplication jobApplication) {
 		jobApplicationService.add(jobApplication);
 			
 	return "redirect:joblist";
 	}
-	
+	// shows aplicant's detailed information
 	@GetMapping("/application/{id}")
 	public String getByID(@PathVariable int id,Model model) {
 		JobApplication application=jobApplicationService.getById(id);
 			model.addAttribute("applications", application);
 					return "application";
 	}
+	/// lists applications for selected joblist
 	@GetMapping("/applicationlist/{joblistid}")
 	public String getByJoblistID(@PathVariable String joblistid,Model model) {
-		System.out.println("id----"+joblistid);
 		List<JobApplication> applications=jobApplicationService.getByJoblistId(joblistid);
 			model.addAttribute("applicationsbyJobID", applications);
 					return "applicationlistbyjoblist";

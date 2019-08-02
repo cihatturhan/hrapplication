@@ -9,9 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import com.simpleapplication.hrjoblisting.Business.IJobListService;
 import com.simpleapplication.hrjoblisting.Entities.Joblist;
 
@@ -26,6 +24,7 @@ public class JoblistController {
 		super();
 		this.joblistService = joblistService;
 	}
+	/// gets joblists from DB and lists them to apply
 	@GetMapping("/joblist")
 	public String joblist (Model model){
 		List<Joblist> joblists=joblistService.getAll();
@@ -33,6 +32,8 @@ public class JoblistController {
 		return "joblist";
 	
 	}
+	
+	/// get joblists from DB and lists them with detailed inforation
 	@GetMapping("/listing")
 	public String lisitng (Model model){
 		List<Joblist> joblists=joblistService.getAll();
@@ -40,6 +41,8 @@ public class JoblistController {
 		return "listing";
 	
 	}
+	
+	//// gets joblists from DB and list them to see applicants
 	@GetMapping("/applicationlist")
 	public String applicationlist (Model model){
 		List<Joblist> joblists=joblistService.getAll();
@@ -48,6 +51,7 @@ public class JoblistController {
 	
 	}
 
+	// add new joblists
 	@PostMapping("/add")
 	public String add(@ModelAttribute Joblist joblist) {
 		
@@ -56,18 +60,20 @@ public class JoblistController {
 		return "redirect:joblist";
 	}
 	
+	/// update joblist
 	@PostMapping("/update")
 	public String update(@ModelAttribute Joblist joblist) {
 	joblistService.update(joblist);
 	return "redirect:listing";
 	}
-	
+	 // delete joblist
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable int id) {
 	joblistService.delete(id);
 		return "redirect:/listing";
 	}
 	
+	//// shows joblist editing page
 	@GetMapping("/listing/{id}")
 	public String edit(@PathVariable int id,Model model){
 		Joblist joblist=joblistService.getById(id);
@@ -76,6 +82,7 @@ public class JoblistController {
 		
 	}
 	
+	// shows joblist apply page
 	@GetMapping("/joblist/{id}")
 	public String Apply(@PathVariable int id,Model model) {
 		Joblist joblist=joblistService.getById(id);

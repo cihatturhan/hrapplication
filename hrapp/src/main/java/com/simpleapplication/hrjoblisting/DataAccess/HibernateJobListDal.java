@@ -52,7 +52,7 @@ public class HibernateJobListDal implements IJobListDal{
 	@Transactional
 	public void delete(int id) {
 		Session session = entityManager.unwrap(Session.class);
-		Joblist joblistToDelete= session.get(Joblist.class,id);/// önce sileceğimiz nesyeyi yakalıyoruz
+		Joblist joblistToDelete= session.get(Joblist.class,id);
 		session.delete(joblistToDelete);
 		
 	}

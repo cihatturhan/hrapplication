@@ -55,7 +55,7 @@
   <ul class="list-group list-group-flush">
     <li class="list-group-item" th:text="@{Email:    }+${applications.email}"></li>
     <li class="list-group-item" th:text="@{Phone number: }+${applications.phoneNumber}"></li>
-    <li class="list-group-item"th:text="@{Phone number: }+${applications.address}">Vestibulum at eros</li>
+    <li class="list-group-item"th:text="@{Address: }+${applications.address}">Vestibulum at eros</li>
   </ul>
   <div class="card-body">
     <a th:if="${applications.dBFileId}" th:href="@{/downloadFile/}+${applications.dBFileId}" class="card-link">Download Resume</a>
