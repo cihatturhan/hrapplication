@@ -43,15 +43,15 @@
 
 
 <div class="container col-md-6 ">
-	<h1>Form</h1>
+	<h1>Edit Joblist</h1>
     <form action="#" th:action="@{/update}" th:object="${joblist}" method="post">
      <div class="form-group">
       <label for="jobTitle">Job Title</label>
-      <input type="text" name="jobTitle" th:value="${joblist.jobTitle}"  class="form-control" placeholder="Job Title"/>
+      <input maxlength="250" type="text" name="jobTitle" th:value="${joblist.jobTitle}"  class="form-control" placeholder="Job Title"/>
      </div>
      <div class="form-group">
       <label for="jobDescription">Job Description</label>
-  	  <textarea th:text="${joblist.jobDescription}" type="text" class="form-control" name="jobDescription" placeholder="Job Description" /></textarea>
+  	  <textarea maxlength="4800" rows="30" th:text="${joblist.jobDescription}" type="text" class="form-control" name="jobDescription" placeholder="Job Description" /></textarea>
   	  </div>
   	   <div class="form-group form-row">
        <label class="col-form-label col-10" for="jobDescription">Number of people to hire</label>

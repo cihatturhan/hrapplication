@@ -9,6 +9,19 @@ var dBFileId = document.querySelector('#dBFileId');
 
 
 
+
+function lessDescription(classToMinimize){
+	classToMinimize="."+classToMinimize;
+		var elements = document.querySelectorAll(classToMinimize);
+		console.log(elements);
+	    for (var i = 0; i < elements.length; i++) {
+	        if(elements[i].innerHTML&&elements[i].innerHTML.length>75)
+	    	elements[i].innerHTML=elements[i].innerHTML.substring(0, 65)+" .........";
+	    }
+}
+
+
+
 function uploadSingleFile(file) {
     var formData = new FormData();
     formData.append("file", file);
@@ -35,7 +48,7 @@ function uploadSingleFile(file) {
     xhr.send(formData);
 }
 
-
+lessDescription("minimizeDescrption");
 
 singleUploadForm.addEventListener('click', function(event){
     var files = singleFileUploadInput.files;

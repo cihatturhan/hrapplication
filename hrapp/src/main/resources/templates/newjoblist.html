@@ -46,11 +46,11 @@
     <form action="#" th:action="@{/add}" th:object="${joblist}" method="post">
      <div class="form-group">
       <label for="jobTitle">Job Title</label>
-      <input type="text" name="jobTitle" class="form-control" placeholder="Job Title"/>
+      <input maxlength="250" type="text" name="jobTitle" class="form-control" placeholder="Job Title"/>
      </div>
      <div class="form-group">
       <label for="jobDescription">Job Description</label>
-  	  <textarea type="text" class="form-control" name="jobDescription" placeholder="Job Description" /></textarea>
+  	  <textarea maxlength="4800" type="text" rows="10" class="form-control" name="jobDescription" placeholder="Job Description" /></textarea>
   	  </div>
   	   <div class="form-group form-row">
        <label class="col-form-label col-10" for="jobDescription">Number of people to hire</label>

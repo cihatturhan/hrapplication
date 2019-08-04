@@ -43,12 +43,15 @@
 
 
 
+
+
 <div class="container col-md-6 ">
 <div class="card" style="width: 36rem;">
  
   <div class="card-body">
     <h5 class="card-title" th:text="${joblist.jobTitle}">Card title</h5>
-    <p class="card-text " th:text="@{Job Description : }+${joblist.jobDescription}"></p>
+     <p>Job Description:   &nbsp &nbsp   </p>
+    <p class="card-text" ><textarea maxlength="4800" type="text" rows="20" class="form-control" name="jobDescription" placeholder="Job Description" />[[${joblist.jobDescription}]] </textarea> </p>
     <b  th:text="@{Last Application Date : }+${joblist.lastApplicationDate}" class="card-link">Card link</b>
     <b th:text="@{Number of People to Hire : }+${joblist.numberOfPeopleToHire}"  class="card-link">Another link</b>
   </div>
@@ -59,24 +62,24 @@
 	    <div class="form-row">
 		    <div class="form-group col-md-6">
 		      <label for="inputName">Name Surname</label>
-		      <input type="text" class="form-control" name="name" id="inputName" placeholder="Name Surname">
+		      <input maxlength="250" type="text" class="form-control" name="name" id="inputName" placeholder="Name Surname">
 		    </div>
 		    <div class="form-group col-md-6">
 		      <label for="inputEmail">Email</label>
-		      <input type="email" class="form-control" name="email" id="inputEmail" placeholder="Email">
+		      <input maxlength="250" type="email" class="form-control" name="email" id="inputEmail" placeholder="Email">
 		    </div>
 	  </div>
      <div class="form-group form-row">
       <label class="col-form-label col-6" for="inputPhone">Phone Number:</label>
-      <input type="text" name="phoneNumber" id="inputPhone"  class="form-control col-6" placeholder="05XX"/>
+      <input maxlength="250" type="text" name="phoneNumber" id="inputPhone"  class="form-control col-6" placeholder="05XX"/>
      </div>
      <div class="form-group">
       <label for="inputAdress">Adress</label>
-  	  <textarea  rows="4" class="form-control" name="address" id="inputAdress" placeholder="Adress" /></textarea>
+  	  <textarea maxlength="4800" rows="4" class="form-control" name="address" id="inputAdress" placeholder="Adress" /></textarea>
   	  </div>
   	  <div class="form-group">
       <label for="inputthoughtsOnJob">Thoughts About Job</label>
-  	  <textarea  rows="2" class="form-control" name="thoughtsOnJob" id="inputthoughtsOnJob" placeholder="Enter your thoughts about this Job" /></textarea>
+  	  <textarea  maxlength="4800" rows="2" class="form-control" name="thoughtsOnJob" id="inputthoughtsOnJob" placeholder="Enter your thoughts about this Job" /></textarea>
   	  </div>
   	
   	  

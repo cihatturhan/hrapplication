@@ -33,7 +33,7 @@ public class JoblistController {
 	
 	}
 	
-	/// get joblists from DB and lists them with detailed inforation
+	/// get joblists from DB and lists them with Manager Options
 	@GetMapping("/listing")
 	public String lisitng (Model model){
 		List<Joblist> joblists=joblistService.getAll();
@@ -79,6 +79,14 @@ public class JoblistController {
 		Joblist joblist=joblistService.getById(id);
 		model.addAttribute("joblist",joblist );
 		return "editjoblist";
+		
+	}
+	//// shows joblist detail page
+	@GetMapping("/joblistdetail/{id}")
+	public String joblistdetail(@PathVariable int id,Model model){
+		Joblist joblist=joblistService.getById(id);
+		model.addAttribute("joblist",joblist );
+		return "joblistdetail";
 		
 	}
 	
