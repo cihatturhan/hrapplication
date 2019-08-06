@@ -6,7 +6,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 
 @Entity
@@ -22,10 +28,18 @@ public class JobApplication {
 	@Column(nullable = false)
 	private String email;
 	private String phoneNumber;
+	@Column(length = 5000)
 	private String address;
+	@Column(length = 5000)
 	private String thoughtsOnJob;
-	private String joblistid;
-	private int dBFileId;
+	@OneToOne
+	@JoinColumn(name = "fileid")
+	private DBFile dBFile;	
+	@ManyToOne
+    @JoinColumn(name = "joblistid")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+	private Joblist joblist;
+	
 
 	
 	public JobApplication() {
@@ -35,15 +49,16 @@ public class JobApplication {
 
 
 	public JobApplication(String name, String email, String phoneNumber, String address, String thoughtsOnJob,
-			String joblistid, int dBFileId) {
+			String joblistid, DBFile dBFile, Joblist joblist) {
 		super();
 		this.name = name;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
 		this.address = address;
 		this.thoughtsOnJob = thoughtsOnJob;
-		this.joblistid = joblistid;
-		this.dBFileId = dBFileId;
+		this.joblist = joblist;
+		this.dBFile = dBFile;
+		this.joblist= joblist;
 	}
 
 
@@ -53,9 +68,11 @@ public class JobApplication {
 	}
 
 
+
 	public void setId(int id) {
 		this.id = id;
 	}
+
 
 
 	public String getName() {
@@ -63,9 +80,11 @@ public class JobApplication {
 	}
 
 
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 
 
 	public String getEmail() {
@@ -73,9 +92,11 @@ public class JobApplication {
 	}
 
 
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 
 
 	public String getPhoneNumber() {
@@ -83,9 +104,11 @@ public class JobApplication {
 	}
 
 
+
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+
 
 
 	public String getAddress() {
@@ -93,9 +116,11 @@ public class JobApplication {
 	}
 
 
+
 	public void setAddress(String address) {
 		this.address = address;
 	}
+
 
 
 	public String getThoughtsOnJob() {
@@ -103,31 +128,48 @@ public class JobApplication {
 	}
 
 
+
 	public void setThoughtsOnJob(String thoughtsOnJob) {
 		this.thoughtsOnJob = thoughtsOnJob;
 	}
 
 
-	public String getJoblistid() {
-		return joblistid;
+
+	public DBFile getdBFile() {
+		return dBFile;
 	}
 
 
-	public void setJoblistid(String joblistid) {
-		this.joblistid = joblistid;
+
+	public void setdBFile(DBFile dBFile) {
+		this.dBFile = dBFile;
 	}
 
 
-	public int getdBFileId() {
-		return dBFileId;
+
+	public Joblist getJoblist() {
+		return joblist;
 	}
 
 
-	public void setdBFileId(int dBFileId) {
-		this.dBFileId = dBFileId;
+
+	public void setJoblist(Joblist joblist) {
+		this.joblist = joblist;
 	}
-	
-	
+
+
+
+//
+//	public int getdBFileId() {
+//		return dBFileId;
+//	}
+//
+//
+//	public void setdBFileId(int dBFileId) {
+//		this.dBFileId = dBFileId;
+//	}
+//	
+//	
 
 
 

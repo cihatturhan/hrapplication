@@ -39,7 +39,7 @@ public class JobApplicationManager implements IJobApplicationService{
 	}
 
 	@Override
-	public List<JobApplication> getByJoblistId(String id) {
+	public List<JobApplication> getByJoblistId(int id) {
 		
 		return jobApplicationDal.getByJoblist(id);
 	}

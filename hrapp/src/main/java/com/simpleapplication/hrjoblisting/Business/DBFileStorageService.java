@@ -40,7 +40,6 @@ public class DBFileStorageService {
 	    }
 
 	    public DBFile getFile(int id) {
-	    	System.out.println("-----logg");
 	        return dbFileRepository.findById(id)
 	                .orElseThrow(() -> new MyFileNotFoundException("File not found with id " + toString()));
 	    }

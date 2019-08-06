@@ -1,6 +1,8 @@
 package com.simpleapplication.hrjoblisting.Entities;
 
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.*;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -14,15 +16,13 @@ public class Joblist {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private int id;
-	@Column(name="jobtitle",nullable = false)
+	@Column(nullable = false)
 	private String jobTitle;
-	@Column(name="jobdescription")
+	@Column(length = 5000)
 	private String jobDescription;
-	@Column(name="numberofpeopletohire")
 	private int numberOfPeopleToHire;
 	
 	@Temporal(TemporalType.DATE )
-	@Column(name="lastapplicationdate")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date lastApplicationDate;
 	
@@ -31,17 +31,19 @@ public class Joblist {
 	
 	
 	
-	
-	public Joblist(int id, String jobTitle, String jobDescription, int numberOfPeopleToHire, Date lastApplicationDate) {
+	public Joblist(int id, String jobTitle, String jobDescription, int numberOfPeopleToHire, Date lastApplicationDate,List<JobApplication> jobApplication) {
 		super();
 		this.id = id;
 		this.jobTitle = jobTitle;
 		this.jobDescription = jobDescription;
 		this.numberOfPeopleToHire = numberOfPeopleToHire;
 		this.lastApplicationDate = lastApplicationDate;
+
 	}
 	
-	public Joblist(){}
+	public Joblist(){
+		
+	}
 	
 	
 	public int getId() {
@@ -74,7 +76,9 @@ public class Joblist {
 	public void setLastApplicationDate(Date lastApplicationDate) {
 		this.lastApplicationDate = lastApplicationDate;
 	}
-	
+
+
+
 	
 	
 	

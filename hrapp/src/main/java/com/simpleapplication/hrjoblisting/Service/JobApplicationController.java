@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.simpleapplication.hrjoblisting.Business.IJobApplicationService;
-
+import com.simpleapplication.hrjoblisting.Business.IJobListService;
 import com.simpleapplication.hrjoblisting.Entities.JobApplication;
 
 
@@ -20,15 +20,19 @@ public class JobApplicationController {
 	
 	@Autowired
 	private IJobApplicationService jobApplicationService;
+	@Autowired
+	private IJobListService joblistService;
 
 
 	
 	/// adds new application and redirects applicant to joblist page
 	@PostMapping("/addapplication")
-	public String add(@ModelAttribute JobApplication jobApplication) {
+	public String add(@ModelAttribute JobApplication jobApplication, Model model) {
 		jobApplicationService.add(jobApplication);
+		model.addAttribute("joblisttitle",joblistService.getById(jobApplication.getJoblist().getId()).getJobTitle());
+		System.out.println("title------"+joblistService.getById(jobApplication.getJoblist().getId()).getJobTitle());
 			
-	return "redirect:joblist";
+	return "successfullapplication";
 	}
 	// shows aplicant's detailed information
 	@GetMapping("/application/{id}")
@@ -39,7 +43,7 @@ public class JobApplicationController {
 	}
 	/// lists applications for selected joblist
 	@GetMapping("/applicationlist/{joblistid}")
-	public String getByJoblistID(@PathVariable String joblistid,Model model) {
+	public String getByJoblistID(@PathVariable int joblistid,Model model) {
 		List<JobApplication> applications=jobApplicationService.getByJoblistId(joblistid);
 			model.addAttribute("applicationsbyJobID", applications);
 					return "applicationlistbyjoblist";

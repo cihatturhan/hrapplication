@@ -9,6 +9,6 @@ public interface IJobApplicationService {
 	public void add(JobApplication application);
 	public List<JobApplication> getAll();
 	public JobApplication getById(int id);
-	public List<JobApplication> getByJoblistId(String joblistId);
+	public List<JobApplication> getByJoblistId(int joblistId);
 
 }

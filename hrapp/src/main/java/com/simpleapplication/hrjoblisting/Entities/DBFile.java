@@ -20,6 +20,8 @@ public class DBFile {
     private byte[] data;
     
 
+    
+
     public DBFile() {
 
     }
@@ -29,7 +31,10 @@ public class DBFile {
 		this.fileName = fileName;
 		this.fileType = fileType;
 		this.data = data;
+
 	}
+
+
 
 	public int getId() {
 		return id;

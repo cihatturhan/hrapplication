@@ -9,7 +9,7 @@ public interface IJobApplication {
 	public void add(JobApplication applicaiton);
 	public JobApplication getById(int id);
 	public List<JobApplication> getAll();
-	public List<JobApplication> getByJoblist(String joblistid);
+	public List<JobApplication> getByJoblist(int joblistid);
 	
 
 }

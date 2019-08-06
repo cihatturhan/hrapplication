@@ -5,7 +5,7 @@ var singleFileUploadInput = document.querySelector('#fileUploadInput');
 var singleFileUploadError = document.querySelector('#UploadError');
 var singleFileUploadSuccess = document.querySelector('#fileUploadSuccess');
 var singleFileUploadWarning = document.querySelector('#fileUploadWarning');
-var dBFileId = document.querySelector('#dBFileId');
+var dBFileId = document.querySelector('#dBFile');
 
 
 
@@ -34,7 +34,6 @@ function uploadSingleFile(file) {
         var response = JSON.parse(xhr.responseText);
         singleFileUploadWarning.innerHTML="";
         if(xhr.status == 200) {
-        	console.log("done");
             singleFileUploadError.style.display = "none";
             singleFileUploadSuccess.innerHTML = "<p>File Uploaded Successfully.</p>";
             singleFileUploadSuccess.style.display = "block";

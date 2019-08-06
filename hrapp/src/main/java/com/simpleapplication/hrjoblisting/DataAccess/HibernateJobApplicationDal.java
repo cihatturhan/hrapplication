@@ -53,12 +53,10 @@ public class HibernateJobApplicationDal implements IJobApplication {
 	}
 
 	@Override
-	public List<JobApplication> getByJoblist(String joblistId) {
-
-
-		System.out.println("id---"+ joblistId);
+	public List<JobApplication> getByJoblist(int joblistId) {
+		
 		Session session = entityManager.unwrap(Session.class);		
-		Query<JobApplication> query= session.createQuery("from JobApplication c where c.joblistid = :id");
+		Query<JobApplication> query= session.createQuery("from JobApplication where joblistid = :id");
 		query.setParameter("id", joblistId);
 		List<JobApplication> application=query.list();
 			return application; 
