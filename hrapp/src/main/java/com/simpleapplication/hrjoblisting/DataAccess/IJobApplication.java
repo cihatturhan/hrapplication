@@ -10,6 +10,7 @@ public interface IJobApplication {
 	public JobApplication getById(int id);
 	public List<JobApplication> getAll();
 	public List<JobApplication> getByJoblist(int joblistid);
+	public boolean isEmailInUse(String applicantEmail);
 	
 
 }

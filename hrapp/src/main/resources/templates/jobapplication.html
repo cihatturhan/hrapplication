@@ -61,12 +61,12 @@
     <form action="#" th:action="@{/addapplication}" th:object="${application}" method="post" >
 	    <div class="form-row">
 		    <div class="form-group col-md-6">
-		      <label for="inputName">Name Surname</label>
-		      <input maxlength="250" type="text" class="form-control" name="name" id="inputName" placeholder="Name Surname">
+		      <label for="inputName" >Name Surname</label>
+		      <input maxlength="250" type="text" class="form-control" name="name" id="inputName" placeholder="Name Surname" required>
 		    </div>
 		    <div class="form-group col-md-6">
-		      <label for="inputEmail">Email</label>
-		      <input maxlength="250" type="email" class="form-control" name="email" id="inputEmail" placeholder="Email">
+		      <label for="inputEmail" >Email</label>
+		      <input maxlength="250" type="email" class="form-control" name="email" id="inputEmail" placeholder="Email" required>
 		    </div>
 	  </div>
      <div class="form-group form-row">

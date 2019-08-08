@@ -30,7 +30,7 @@ public class HrjoblistingApplicationTests {
 	public void updateTest()  {
 		
 		Joblist joblist = new Joblist();
-		joblist.setId(23);
+		joblist.setId(1);
 		joblist.setJobTitle("Software Team Lead");
 		joblist.setJobDescription("Leads the software Team which develop great products");
 		joblist.setNumberOfPeopleToHire(2);
@@ -52,7 +52,7 @@ public class HrjoblistingApplicationTests {
 		joblistService.update(joblist);
 
 
-		assertEquals(joblist.getNumberOfPeopleToHire(),joblistService.getById(23).getNumberOfPeopleToHire());
+		assertEquals(joblist.getNumberOfPeopleToHire(),joblistService.getById(1).getNumberOfPeopleToHire());
 		
 		
 	

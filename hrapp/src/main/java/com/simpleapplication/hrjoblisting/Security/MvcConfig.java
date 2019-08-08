@@ -1,4 +1,4 @@
-package com.simpleapplication.hrjoblisting.Business;
+package com.simpleapplication.hrjoblisting.Security;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
@@ -23,6 +23,8 @@ public class MvcConfig implements WebMvcConfigurer {
         registry.addViewController("/applicationlist").setViewName("applicationlist");
         registry.addViewController("/applicationlistbyjoblist").setViewName("applicationlistbyjoblist");
         registry.addViewController("/successfullapplication").setViewName("successfullapplication");
+        registry.addViewController("/error").setViewName("error");
+        registry.addViewController("/customerror").setViewName("customerror");
     }
 
 }

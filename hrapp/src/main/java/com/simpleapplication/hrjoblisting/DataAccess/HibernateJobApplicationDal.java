@@ -4,11 +4,13 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 
+
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
 
 import com.simpleapplication.hrjoblisting.Entities.JobApplication;
 
@@ -31,9 +33,10 @@ public class HibernateJobApplicationDal implements IJobApplication {
 	@Override
 	@Transactional
 	public void add(JobApplication applicaiton) {
-		Session session = entityManager.unwrap(Session.class);
-		session.saveOrUpdate(applicaiton);
-		
+
+			Session session = entityManager.unwrap(Session.class);
+			session.saveOrUpdate(applicaiton);
+			
 	}
 
 	@Override
@@ -61,6 +64,18 @@ public class HibernateJobApplicationDal implements IJobApplication {
 		List<JobApplication> application=query.list();
 			return application; 
 
+	}
+
+	@Override
+	public boolean isEmailInUse(String applicantEmail) {
+		Session session = entityManager.unwrap(Session.class);		
+		Query<JobApplication> query= session.createQuery("from JobApplication where email = :applicantEmail");
+		query.setParameter("applicantEmail", applicantEmail);
+		List<JobApplication> applications=query.list();
+		if(applications.size()>0) {
+			return true;
+		}	
+		return false;
 	}
 
 

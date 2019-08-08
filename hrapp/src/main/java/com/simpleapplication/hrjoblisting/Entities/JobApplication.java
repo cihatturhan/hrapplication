@@ -25,7 +25,7 @@ public class JobApplication {
 	private int id;
 	@Column(nullable = false)
 	private String name;
-	@Column(nullable = false)
+	@Column(nullable = false,unique = true)
 	private String email;
 	private String phoneNumber;
 	@Column(length = 5000)
