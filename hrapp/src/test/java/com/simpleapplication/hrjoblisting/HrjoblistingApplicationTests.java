@@ -41,7 +41,7 @@ public class HrjoblistingApplicationTests {
 		try {	
 			joblistDate = new SimpleDateFormat("dd/MM/yyyy").parse(sDate);
 		}catch (Exception e) {
-			System.out.println("--------Exception catched   "+e);
+			System.out.println("--------Exception catched error   "+e);
 		}
 		joblist.setLastApplicationDate(joblistDate);
 
